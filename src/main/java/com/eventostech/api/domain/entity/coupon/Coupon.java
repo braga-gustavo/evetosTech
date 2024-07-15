@@ -24,7 +24,7 @@ public class Coupon {
 
     private Integer discount;
 
-    @Column(name="code")
+    @Column(name="coupon")
     private String couponCode;
 
     private Date valid;
