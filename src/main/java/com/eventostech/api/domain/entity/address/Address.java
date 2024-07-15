@@ -26,6 +26,7 @@ public class Address {
     private String street;
 
     @OneToOne
+    @JoinColumn(name ="event_id")
     private Event event;
 
 
