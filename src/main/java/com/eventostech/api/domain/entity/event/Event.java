@@ -32,10 +32,8 @@ public class Event {
     @Column(name = "remote")
     private Boolean isRemote;
 
-    @Column(name = "img")
     private String img_url;
 
-    @Column(name = "event")
     private String envent_url;
 
 }
