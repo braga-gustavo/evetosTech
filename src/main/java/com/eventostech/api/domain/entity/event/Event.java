@@ -2,12 +2,9 @@ package com.eventostech.api.domain.entity.event;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 
@@ -17,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Setter
 public class Event {
 
     @Id
@@ -27,13 +25,13 @@ public class Event {
 
     private String description;
 
-    private LocalDate date;
+    private Date date;
 
     @Column(name = "remote")
     private Boolean isRemote;
 
-    private String img_url;
+    private String imgUrl;
 
-    private String envent_url;
+    private String enventUrl;
 
 }
