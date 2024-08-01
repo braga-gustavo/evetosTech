@@ -2,10 +2,7 @@ package com.eventostech.api.domain.entity.coupon;
 
 import com.eventostech.api.domain.entity.event.Event;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -16,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Setter
 public class Coupon {
 
     @Id
@@ -24,12 +22,12 @@ public class Coupon {
 
     private Integer discount;
 
-    @Column(name="coupon")
-    private String couponCode;
+    @Column(name = "coupon")
+    private String code;
 
     private Date valid;
 
-   @ManyToOne
-   @JoinColumn(name = "event_id")
+    @ManyToOne
+    @JoinColumn(name = "event_id")
     private Event event;
 }
