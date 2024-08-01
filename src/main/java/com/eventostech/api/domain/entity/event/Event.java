@@ -8,13 +8,13 @@ import java.util.Date;
 import java.util.UUID;
 
 
-@Table(name = "event")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
 @Setter
+@Table(name = "event")
 public class Event {
 
     @Id
@@ -27,11 +27,15 @@ public class Event {
 
     private Date date;
 
-    @Column(name = "remote")
-    private Boolean isRemote;
+    private Boolean remote;
 
+    @Column(name = "img_url")
     private String imgUrl;
 
+    @Column(name = "event_url")
     private String enventUrl;
 
 }
+
+
+
