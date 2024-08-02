@@ -85,15 +85,27 @@ public class EventService {
     public List<EventResponseDTO> getUpcomingEvents(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         Page<Event> eventsPage = eventRepository.getUpcomingEvents(new Date(), pageable);
+        return getEventResponseDTOS(eventsPage);
+
+    }
+
+    public List<EventResponseDTO> getFileteredEvents(int page, int size, String title, String city, String uf,
+                                                     Date starDate,
+                                                     Date endDate) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Event> eventsPage = eventRepository.findFilteredEvents(new Date(),city, title, uf, starDate, endDate, pageable);
+        return getEventResponseDTOS(eventsPage);
+    }
+
+    private List<EventResponseDTO> getEventResponseDTOS(Page<Event> eventsPage) {
         return eventsPage.map(event -> new EventResponseDTO(event.getId(),
                 event.getTitle(),
                 event.getDescription(),
                 event.getDate(),
-                "",
-                "",
+                event.getAddress() != null ?  event.getAddress().getCity() : "" ,
+                event.getAddress() != null ?  event.getAddress().getState() : "" ,
                 event.getRemote(),
                 event.getEnventUrl(),
                 event.getImgUrl())).toList();
-
     }
 }

@@ -1,6 +1,7 @@
 package com.eventostech.api.domain.entity.event;
 
 
+import com.eventostech.api.domain.entity.address.Address;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +35,9 @@ public class Event {
 
     @Column(name = "event_url")
     private String enventUrl;
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    private Address address;
 
 }
 
