@@ -2,10 +2,7 @@ package com.eventostech.api.domain.entity.address;
 
 import com.eventostech.api.domain.entity.event.Event;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -15,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Setter
 public class Address {
 
     @Id
@@ -23,7 +21,7 @@ public class Address {
 
     private String state;
 
-    private String street;
+    private String city;
 
     @OneToOne
     @JoinColumn(name ="event_id")
