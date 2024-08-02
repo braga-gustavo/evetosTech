@@ -30,6 +30,9 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private AddressService addressService;
+
     @Value("${aws.bucket.name}")
     private String bucketName;
 
@@ -50,6 +53,10 @@ public class EventService {
         newEvent.setRemote(eventData.remote());
 
         eventRepository.save(newEvent);
+
+        if(!eventData.remote()) {
+            this.addressService.createAddress(eventData, newEvent);
+        }
 
         return newEvent;
     }
